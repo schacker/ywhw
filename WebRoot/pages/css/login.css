@@ -42,6 +42,12 @@
 	float:left;
 	margin-bottom: 10px;
 }
+#page_login .register{
+	margin-right:10%;
+	font-weight:bold;
+	float:right;
+	margin-bottom: 10px;
+}
 
 #page_login .button{
 	clear:both;
