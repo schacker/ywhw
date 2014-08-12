@@ -1,0 +1,27 @@
+#page_more .content .top .nickName {
+	width : 96%;
+	color : white;
+	font-size : 18px;
+	text-align : center;
+	border-radius : 3px;
+	margin-top : 10px;
+	margin-left : 2%;
+	background : #33CC99;
+}
+
+#page_more .content .list {
+	width : 96%;
+	margin-left : 2%;
+	margin-top : 10px;
+}
+#page_more .content .list .item {
+	width : 100%;
+	text-align : center;
+	font-size : 15px;
+	color : white;
+	margin-top : 2px;
+	padding-top : 3px;
+	padding-bottom : 3px;
+	background : #419BA6;
+	border-radius : 3px;
+}

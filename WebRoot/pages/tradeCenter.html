@@ -1,0 +1,24 @@
+<div id="page_tradeCenter">
+	<link href="css/tradeCenter.css" rel="stylesheet" type="text/css"/>
+	<div class="content">
+		<div class="list">
+			
+		</div>	
+	</div>
+	<script type="text/javascript">
+    	var page_tradeCenter={
+			init: function() {
+			},
+			beforeshow: function() {
+				$InterAction.setHeader("易物中心", "", "refresh");
+				setActiveBtn(2);
+				showFooter();
+			},
+			goPage:function(url){
+				$PageHandler.moveToPage(url);
+			}
+		};
+    	$('#page_tradeCenter').bind('pageinit', page_tradeCenter.init)
+					   .bind('pagebeforeshow', page_tradeCenter.beforeshow);
+    </script>
+</div>

@@ -1,0 +1,13 @@
+.scrollview{
+	position:relative;
+	overflow:hidden;
+	display:block;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+}
+
+.scrollview .view{
+	position:relative;
+	display:inline-block;
+}
+

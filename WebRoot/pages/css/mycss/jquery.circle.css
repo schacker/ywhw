@@ -1,0 +1,83 @@
+.circleimg-front {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	overflow: visible;
+	z-index: 10;
+}
+
+.circleimg-front .box {
+	display: none;
+}
+
+.circleimg-front .box.left,
+.circleimg-front .box.center,
+.circleimg-front .box.right {
+	position: absolute;
+	width: 70%;
+	top: 7%;
+	display: inherit;
+}
+
+.circleimg-front .box.left {
+	left: -85%;
+}
+
+.circleimg-front .box.right {
+	right: -85%;
+}
+
+.circleimg-front .box.center {
+	left: 15%;
+	z-index: 1;
+}
+
+.circleimg-front .box .adImg {
+	box-shadow: 3px 3px 3px #666;
+	-moz-box-shadow: 3px 3px 3px #fff;
+	display: block;
+	width: 100%;
+}
+
+.circleimg-front .box .iconImg {
+	width: 80%;
+	margin-top:5%;
+	padding-left: 10%;
+}
+
+.circleimg-back {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	z-index: 0;
+	overflow: visible;
+}
+
+.circleimg-back img {
+	position: absolute;
+	top: 22%;
+	width: 44%;
+	margin: 0 3%;
+	display: none;
+}
+
+.circleimg-back .left_hide {
+	display: inherit;
+	left: -50%;
+}
+
+.circleimg-back .left_show {
+	display: inherit;
+	left: 0;
+}
+
+.circleimg-back .right_show {
+	display: inherit;
+	left: 50%;
+}
+
+.circleimg-back .right_hide {
+	display: inherit;
+	left: 100%;
+}

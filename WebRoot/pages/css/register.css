@@ -1,0 +1,42 @@
+body{
+	background:#EFEEEE;
+}
+
+#page_register .content{
+	margin-top:15px;
+	background:#FFFFFF;
+	margin-left:3%;
+	margin-right:3%;
+	border:#E3E3E3 solid 2px;
+	border-radius:5px;
+	color:gray;
+}
+
+#page_register .content input{
+	border:0;
+	height:35px;
+	width:70%;
+}
+#page_register .content .user, .repas{
+	padding-left:5%;
+	line-height:40px;
+	height:40px;
+}
+
+#page_register .content .pas{
+	padding-left:5%;
+	border-top:#E3E3E3 solid 1px;
+	border-bottom:#E3E3E3 solid 1px;
+	line-height:40px;
+	height:40px;
+}
+#page_register .button{
+	color:white;
+	background:#BF9F62;
+	text-align:center;
+	height:20px;
+	line-height:20px;
+	width:36%;
+	border-radius:5px;
+	margin:10px auto;
+}

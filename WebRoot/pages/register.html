@@ -1,0 +1,77 @@
+
+<div id="page_register">
+	<link rel="stylesheet" type="text/css" href="css/register.css"/>
+	<div class="content">
+		<div class="user">用&nbsp;户&nbsp;名：<input type="text" class="username"/></div>
+		<div class="pas">登录密码：<input type="password"  class="password"/></div>
+		<div class="repas">确认密码：<input type="password" class="confirm"/></div>
+	</div>
+	<div class="button" onclick="page_register.register()">注册</div>
+
+	<script>
+    	var page_register = {
+    		init:function(){
+    		},
+    		beforeshow:function(){
+    			setActiveBtn(4);
+    			$InterAction.setHeader("注册","back","refresh");
+    		},
+    		show:function(){
+    			var me = page_register;
+    			me.refresh();
+    		},
+    		refresh:function(){
+    			$("#page_register .username").val('');
+    			$("#page_register .password").val('');
+    			$("#page_register .confirm").val('');
+    		},
+    		register:function(){
+    			var username = $("#page_register .username").val();
+				if(username=="" || username.length<3|| username.length>30 ||username=="用户名"){
+					$MsgBox.alert("用户名长度为3~30");
+					$("#page_register .username").focus();
+					return;
+				}
+				var password = $("#page_register .password").val();
+				var confirm = $("#page_register .confirm").val();
+				if(password == "" || password.length<6 || password.length>20 || password=="密码"){
+					$MsgBox.alert("密码长度为6~20");
+					$("#page_register .password").focus();
+					return;
+				}
+				if(password != confirm || confirm==""){
+					$MsgBox.alert("密码输入不一致");
+					$("#page_register .confirm").focus();
+					return;
+				}
+				$.jsonp({
+					url:GLOBAL.baseUrl+"/member/mobi_regist.action",
+					callback: 'callback',
+					data:{
+						password:password,
+						userName:username,
+						imei:GLOBAL.imei,
+						companyId:GLOBAL.companyId
+					},
+	                complete:function(data,success){},
+					success:function(data){
+						if(data.success){
+							$MsgBox.alert("注册成功");
+							//$InterAction.updateMember();
+							$PageHandler.moveToPage("more.html");
+							$("#page_register .username").val('');
+    						$("#page_register .password").val('');
+    						$("#page_register .confirm").val('');
+						}else {
+							$MsgBox.alert("注册失败:"+data.result.errors);
+						}
+					}
+				});
+    		}
+    	}
+    	$("#page_register").live("pageinit",page_register.init)
+			.live("pagebeforeshow",page_register.beforeshow)
+			.live("pageshow",page_register.show);
+    </script>
+</div>
+

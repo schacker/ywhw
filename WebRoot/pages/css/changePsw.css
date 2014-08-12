@@ -1,0 +1,64 @@
+#page_changePsw .password0, 
+#page_changePsw .password1, 
+#page_changePsw .password2{
+	width:90%;
+	margin:10px 10px;
+	height:40px;
+}
+
+#page_changePsw  .content .vicode .verifyCode .VerifyCode {
+  margin : 10px 10px;
+  height : 40px;
+}
+
+#page_changePsw .button {
+	display:block;
+	width:30%;
+	margin:0 auto;
+	margin-top:20px;
+}
+
+#page_changePsw a {
+	display:block;
+	color:#aaa;
+	text-decoration:none;
+	text-align:center;
+	margin-top:15px;
+}
+
+#page_changePsw .button1 {
+	width:30%;
+	float:left;
+	margin-left:13%;	
+	text-align:center;
+}
+#page_changePsw .button2 {
+	width:30%;
+	float:left;
+	margin-left:13%;
+	text-align:center;	
+}
+
+#page_changePsw .errorinfo
+{
+	width:90%;
+	position:relative;
+	left:5%;
+	color:red;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+#page_rePadssword .content .vicode {
+   padding-top : 20px;  
+   border : 10px solid  red;
+}
+
+#page_changePsw .content .vicode .vicodePng{
+   float : right;
+   margin-right : 20px;
+   margin-top : -55px;
+}
+#page_changePsw .content .vicode .vicodePng .vicodepng {
+   width : 100px;
+   height : 40px;
+}

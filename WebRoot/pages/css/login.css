@@ -1,0 +1,59 @@
+#page_login{
+	margin:0;
+	background-image: url(../images/login.jpg);
+	background-repeat: no-repeat;
+	background-size:100% 100%;
+	margin-bottom: -50px;
+}
+
+#page_login .title{
+	color:#3BB3C2;
+	font-weight:bold;
+	font-size:150%;
+	float:right;
+	margin-right:3%;
+	margin-top:35%;
+	margin-bottom:60px;
+}
+
+#page_login .userName input, 
+#page_login .password input {
+	clear:both;
+	display:block;
+	width:75%;
+	margin-left:10%;
+	margin-bottom:10px;
+	padding-left:10px;
+	height:30px;
+	border:5px solid #EEEEEE;
+	color:black;
+	border-radius:4px;
+}
+
+#page_login .password{
+	margin-bottom:18px;
+	
+}
+
+#page_login .forgetPsw{
+	margin-left:10%;
+	font-weight:bold;
+	color:#42929D;
+	float:left;
+	margin-bottom: 10px;
+}
+
+#page_login .button{
+	clear:both;
+	margin-left:10%;
+	padding-left:5px;
+	padding-right:5px;
+	width:75%;
+	text-align:center;
+	height:26px;
+	line-height:26px;
+	border:5px solid #42929D;
+	background:#3BB3C2;
+	color:#ffffff;
+	border-radius:4px;
+}

@@ -1,0 +1,92 @@
+<div id="page_more">
+	<link href="css/more.css" rel="stylesheet" type="text/css"/>
+	<div class="content">
+		<div class="top">
+			<div class="nickName">nickName:我叫HH</div>
+		</div>
+		<div class="list">
+			<div class="item" onclick='page_more.exitLogin()'>退出登录</div>
+			<div class="item" onclick='page_more.go("changePsw.html")'>修改密码</div>
+			<div class="item" onclick='page_more.exitSoft()'>退出软件</div>
+			<div class="item" onclick='page_more.go("suggest.html")'>我的反馈</div>
+			<div class="item" onclick='page_more.updateSoft()'>软件更新</div>
+		</div>	
+	</div>
+	<script type="text/javascript">
+    	var page_more={
+		init: function() {
+			page_more.refresh();
+		},
+		beforeshow: function() {
+			$InterAction.setHeader("更多", "", "refresh");
+			setActiveBtn(4);
+			showFooter();
+			var cur_nickName = localStorage.getItem("nickName");
+			var nickName = GLOBAL_CONFIG.more.nickName;
+			if(cur_nickName != nickName) {
+				page_more.refresh();
+				GLOBAL_CONFIG.more.nickName = cur_nickName;
+			}
+		},
+		refresh: function() {
+			//$("#page_more .content .top").empty();
+			//page_more.getData();
+		},
+		getData : function(){
+			$MsgBox.showLoading();  //加载前显示信息
+			$.jsonp({
+				url:GLOBAL.baseUrl + "/member/mobi_getbyid.action",
+				callback :'callback',
+				data:{
+					companyId:GLOBAL.companyId,
+					imei: GLOBAL.imei
+				},
+				complete:function(){$MsgBox.hideLoading();}, //加载后显示信息
+				success : function(data) {
+					if(data && data.success && data.result) {
+						var result = data.result;
+						var html ='';
+						html += "<div class='nickName'>" + "nickName:" + result.nickName + "</div>"
+						$("#page_more .content .top").html(html);
+					}
+				}
+			});
+		},
+		/*退出登陆*/
+		exitLogin:function(){
+			var me = page_more;
+			$.jsonp({
+				url:GLOBAL.baseUrl + "/member/mobi_logout.action",
+				callback : 'callback',
+				data:{
+					imei:GLOBAL.imei,
+					companyId:GLOBAL.companyId
+				},
+				complete:function(){$MsgBox.hideLoading();},
+				success : function(data) {
+					if(data && data.success) {
+						$MsgBox.alert("退出成功");
+						localStorage.removeItem("nickName");
+						$PageHandler.moveToPage("login.html");
+					}else{
+						$MsgBox.alert("退出失败");
+						return;
+					}
+				}
+			});
+		},
+		/*退出软件*/
+		exitSoft:function(){
+			$InterAction.exit();
+		},
+		updateSoft:function() {
+			$InterAction.update();
+		},
+		go:function(url){
+			$PageHandler.moveToPage(url);
+		}
+	};
+    	$('#page_more').bind('pageinit', page_more.init)
+						.bind('pagebeforeshow', page_more.beforeshow);
+    </script>
+</div>

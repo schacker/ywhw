@@ -1,0 +1,92 @@
+<div id='page_changePsw'>
+	<link type="text/css" rel="stylesheet" href="css/changePsw.css" />
+	<div class="content">
+		<div class="errorinfo"></div>
+		<input type="password" name='password0' class='password0' maxLength='20' placeholder='旧密码'>
+		<input type="password" name='password1' class='password1' maxLength='20' placeholder='新密码'/>
+		<input type="password" name='password2' class='password2' maxLength='20' placeholder='确认密码'/>
+		<div class="vicode">
+			<div class="verifyCode">
+				<input type="text" name='verifyCode' class="VerifyCode"  maxLength='6' placeholder='验证码'/>
+			</div>
+			<div class="vicodePng">
+				<img src="css/images/vicode.png" class="vicodepng"/>
+			</div>
+		</div>
+		<div class="button2 button button-green" onclick="page_changePsw.done()">确认</div>
+	</div>
+	<script>
+	var page_changePsw = {
+		init: function(){
+			page_changePsw.refresh();
+		},
+		beforeshow:function(){
+			$InterAction.setHeader("密码重置", "back", "refresh");
+		},
+		refresh: function(){
+			var page = $("#page_changePsw");
+			page.find("[name='password0']").val('');
+			page.find("[name='password1']").val('');
+			page.find("[name='password2']").val('');
+			page.find("[name='verifyCode']").val('');
+		},
+		adderror:function(msg){
+			$MsgBox.alert(msg);
+		},
+		done: function () {
+			var me = page_changePsw,
+				page = $("#page_changePsw"),
+				$pwd0=page.find("[name='password0']"),
+				$pwd1=page.find("[name='password1']"),
+				$pwd2=page.find("[name='password2']"),
+				$vcode=page.find("[name='verifyCode']");
+			// 密码
+			var pwd1 = $pwd1.val();
+			if((msg=validator.betweenLength(pwd1,6,20,'新密码'))){
+				me.adderror(msg);
+				$pwd1.focus();
+				return;
+			}
+			if((msg=validator.equalTo($pwd1.val(),$pwd2.val(),'新密码','确认密码'))){
+				me.adderror(msg);
+				$pwd2.focus();
+				return;
+			}
+			//验证码
+			var vcode = $vcode.val();
+			if((msg=validator.numberLength(vcode,4,'验证码'))){
+				me.adderror(msg);
+				$vcode.focus();
+				return;
+			}
+			// 提交
+			$.jsonp({
+			  	url:GLOBAL.baseUrl + '/member/memberMobi_changePsw.action',
+			  	callback:'callback',
+			  	data:{
+					password:pwd1,
+					verifyCode:vcode
+				},
+			  	complete:function(json,t){
+			  	  hideLoadingMsg();
+			  	  },
+			  	success:function(data) { 
+			  		if(!data.success){
+			  			var msg = getErr(data,config.map);
+			  			if(!msg)
+			  				msg = "提交失败！";
+			  			me.adderror(msg);
+			  		} else {
+			  			$MsgBox.alert('密码重置成功！');
+			  			$PageHandler.moveToPage("login.html");
+			  		}
+			  	}
+			}); 
+		}
+	}
+	//page 初始化
+	$('#page_changePsw').bind('pageinit',page_changePsw.init)
+						.bind('pagebeforeshow',page_changePsw.beforeshow);
+			
+	</script>
+</div>

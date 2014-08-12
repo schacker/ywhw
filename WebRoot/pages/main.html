@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+<META http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+<script src='js/jtouch/jquery.js'></script>
+<script src='js/myjs/boot.js'></script> <!-- 用于加载config.json中的数据（css文件、js文件、meta格式） -->
+<link rel='stylesheet' type='text/css' href='css/main.css'/>
+<head>
+	<script>
+	$(document).ready(function(){
+		// 初始化
+		var hash = $InterAction.getHash();
+		if(getSystemName() == 'android')
+			handleHash(hash);
+	});	
+
+	function handleHash(hash) {
+		var pageId; 
+		if(hash) {
+			var i = hash.indexOf('?');
+			if(i > -1) {
+				pageId = hash.substring(5, i);
+				localStorage.setItem('para', hash.substring(i+1));
+			} else {
+				pageId = hash.substring(5);
+			}
+		} else {
+			// 页面标签pages
+			var pages = localStorage.getItem('pages');
+			localStorage.removeItem('pages');
+			if(pages)
+				$('.pagect').html(pages);
+			// 变量config
+			var config = localStorage.getItem('config');
+			localStorage.removeItem('config');
+			if(config) {
+				GLOBAL_CONFIG = JSON.parse(config);
+			}
+			// 历史history
+			var history = localStorage.getItem('history');
+			localStorage.removeItem('history');
+			if(history) {
+				$PageHandler.history = history.split(',');
+				var hist = $PageHandler.history;
+				if(hist && hist.length) {
+					pageId = hist[hist.length-1];
+				}
+			}
+		}
+		if(pageId)
+			$PageHandler.changePage(pageId);
+		else
+			$PageHandler.changePage('login');
+	}
+	function setActiveBtn(index){
+		$('#footer .item .navbar').each(function(i){
+			if(index == i){
+				$(this).addClass("grey").css("color","#419BA6").find(".img").attr("src","css/images/footer/footercur"+i+".png");
+			}else{
+				$(this).removeClass("grey").css("color","#ffffff").find(".img").attr("src","css/images/footer/footer"+i+".png");
+			}
+		});
+	}
+	/**
+	 * 隐藏底部
+	 */
+	function hideFooter() {
+		$("#footer").hide();
+	}
+	/**
+	 * 隐藏底部
+	 */
+	function showFooter() {
+		$("#footer").show();
+	}
+	function moveFooter(url){
+		$PageHandler.moveToPage(url);
+	}
+	</script>
+</head>
+
+<body><!--
+	<div onclick="shareShow()">显示分享</div>
+	--><div class='pagect'></div>
+	<!-- toast box -->
+	<div class='toast' align='center'>
+		<div class='content'></div>
+	</div>
+
+	<div id="bg"></div>
+	<div id='footer'>
+		<div class="content">
+			<div class="list">
+				<div class="item item1" onclick="moveFooter('tradeMall.html')"><div class="navbar"><div><img src="css/images/footer/footer0.png" class="img"/></div><div><span>易物城</span></div></div></div>
+				<div class="item item2" onclick="moveFooter('courseSchedule.html')"><div class="navbar"><div><img src="css/images/footer/footer1.png" class="img"/></div><div><span>易物记录</span></div></div></div>
+				<div class="item item3" onclick="moveFooter('tradeCenter.html')"><div class="navbar"><div><img src="css/images/footer/footer2.png" class="img"/></div><div><span>易物中心</span></div></div></div>
+				<div class="item item4" onclick="moveFooter('communication.html')"><div class="navbar"><div><img src="css/images/footer/footer3.png" class="img"/></div><div><span>我的消息</span></div></div></div>
+				<div class="item item5" onclick="moveFooter('more.html')"><div class="navbar"><div><img src="css/images/footer/footer4.png" class="img"/></div><div><span>更多</span></div></div></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+#page_tradeMall .content .top {
+	width : 100%;
+	margin-bottom : 5px;
+}
+
+#page_tradeMall .content .top .logo img {
+	width : 100%;
+}
+
+#page_tradeMall .content .list {
+	width : 96%;
+	margin-left : 1.5%;
+	margin-bottom : 4px;
+	border-radius : 9px;
+	border : 2px #419BA6 solid; 
+}
+#page_tradeMall .content .list .item {
+	background : white;
+}
+
+#page_tradeMall .content .list .item .itemTop .left {
+	width : 40%;
+	color : #419BA6;
+	font-size : 16px;
+	float : left;
+	text-align : center;
+	margin-left : 10%; 
+}
+#page_tradeMall .content .list .item .itemTop .right {
+	width : 40%;
+	font-size : 16px;
+	color : #419BA6;
+	float : right;
+	text-align : center;
+	margin-right : 10%;
+}
+#page_tradeMall .content .list .item .thingName,
+#page_tradeMall .content .list .item .intro {
+	width : 90%;
+	margin-left : 5%;
+}
+#page_tradeMall .content .list .item .thingImg {
+	width : 100%;
+}
+#page_tradeMall .content .list .item img {
+	width : 90%;
+	margin-left : 5%;
+}

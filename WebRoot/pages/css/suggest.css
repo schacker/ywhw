@@ -1,0 +1,41 @@
+#page_suggest .top {
+	color:white;
+	padding: 5px;
+	font-size: 14px;
+}
+
+#page_suggest .top div {
+	margin: 8px 5%;
+	color: #3C3C3C;
+}
+
+#page_suggest .content {
+	margin-left:5%;
+	min-height: 100px;
+	resize: none;
+	font-size: 14px;
+	width: 90%;
+}
+
+#page_suggest .bottom {
+	color:gray;
+	margin: 2px 5px;
+	font-size: 14px; 
+}
+
+#page_suggest .bottom .last{
+	margin-left:5%;
+	float: left;
+	margin-top:8px;
+	color:white;
+	font-size:14px;
+	color: #3C3C3C;
+}
+
+#page_suggest .bottom .button{
+	float: right;
+	width: 30%;
+	color: #FFFFFF; 
+	background-color: #F4B600;
+	border-radius:5px;
+}

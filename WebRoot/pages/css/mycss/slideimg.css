@@ -1,0 +1,23 @@
+.slideimg-pager{
+	border-radius:4px;
+	width:5px;
+	height:5px;
+	float:left;
+	margin-right:5px;
+}
+
+
+.slideimg-pagerct{
+	z-index:1;
+	position:absolute;
+	border:1px solid #ccc;
+	border-radius:10px;
+	padding:5px 0px 5px 5px;
+	opacity:0.8;
+	background:#ccc;
+	bottom:10px;
+}
+
+.slideimg-pagerct a{
+	text-decoration:none;
+}

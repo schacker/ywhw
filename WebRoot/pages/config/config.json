@@ -1,0 +1,25 @@
+{
+	"meta":[
+		{name:"viewport",content:"width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"}
+	],
+	"css":[
+		"css/jtouch/scrollview.css",
+		"css/mycss/common.css",
+		"css/mycss/slideimg.css",
+		"css/mycss/jquery.circle.css",
+		"css/mycss/timeTable.css"
+	],
+	"js":[
+		"js/jtouch/scrollview.js",
+		"js/jtouch/jquery.jsonp.js",
+		"js/jtouch/lazyload.js",
+		"js/myjs/android.js",
+		"js/myjs/config.js",
+		"js/myjs/common.js",
+		"js/myjs/slideimg.js",
+		"js/myjs/baidumap.js",
+		"js/myjs/validator.js",
+		"js/myjs/jquery.circle.js",
+		"js/myjs/timeTable.js"
+	]
+}

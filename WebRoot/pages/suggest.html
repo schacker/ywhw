@@ -1,0 +1,89 @@
+<div id='page_suggest'>
+	<link rel='stylesheet' type='text/css' href='css/suggest.css'>
+	<div class="top">
+		<div>请输入你的反馈内容</div>	
+		<textarea class='content' maxlength='140'></textarea>
+	</div>
+	<div class='bottom'>
+		<div class='last'>还可以输入:<span class='number'>140</span></div>
+		<div class='button'  onclick="page_suggest.submitSug()">提交</div>
+		<div style='clear: both;'></div>
+	</div>
+	<script type="text/javascript">
+		var page_suggest = {
+			init: function(){
+			},
+			beforeshow: function() {
+				var me = page_suggest;
+				var config = GLOBAL_CONFIG.suggest;
+				$('#page_suggest .content').focus(function(){
+					config.intervalNum = setInterval(me.checkLen, 500);
+				}).blur(function() {
+					if(null != config.intervalNum) {
+						clearInterval(config.intervalNum);
+						config.intervalNum = null;
+					}
+				});
+				
+				$InterAction.setHeader('反馈信息', 'back', 'refresh');
+				setActiveBtn(4);
+			},
+			show: function(){
+			},
+			refresh:function(){
+				$('#page_suggest .content').val('');
+				$('#page_suggest .bottom .last span').val('140');
+				
+			},
+			submitSug: function(){
+				var content = $('#page_suggest .content').val();
+				if(!content){
+					$MsgBox.alert('请先输入反馈内容');
+					return;
+				}
+				$MsgBox.showLoading();
+				$.jsonp({
+					url:GLOBAL.baseUrl + '/conversation/suggmsgMobi_suggest.action',
+					callback:'callback',
+					data:{
+						content: content,
+						imei: GLOBAL.imei,
+						companyId:GLOBAL.companyId
+					},
+					complete: function(req, success) {
+						$MsgBox.hideLoading();
+					},
+					success:function(data){
+						if(data.success && data.result){
+							$MsgBox.alert('反馈成功！感谢！');
+							$('#page_suggest .content').val('');
+						} else {
+							$MsgBox.alert('反馈失败！请重试！');
+						}
+					}
+				});
+			},
+			checkLen: function(){
+				var str = $('#page_suggest .content').val();
+				if(undefined == str) {
+					var config = GLOBAL_CONFIG.suggest;
+					clearInterval(config.intervalNum);
+					config.intervalNum = null;
+					return;
+				}
+				var strlen = 0;
+				if(str)
+			    	strlen = str.length;
+			    if(strlen > 140){
+			    	$('#page_suggest .content').html(content.substr(0, 140));
+			    	$('#page_suggest .number').html(0);
+			    }else{
+			    	$('#page_suggest .number').html(140 - strlen);
+			    }
+		    }
+		}
+		$('#page_suggest').bind('pageinit',page_suggest.init)
+			     		  .bind('pagebeforeshow',page_suggest.beforeshow)
+						  .bind('pageshow',page_suggest.show);
+	</script>
+</div>

@@ -1,0 +1,111 @@
+<div id="page_activity">
+	<link href="css/test.css" rel="stylesheet" type="text/css">
+	<div class="content">
+		<div class="activity clearfix">
+			<div class="in" onclick="page_activity.go(this)">校内活动</div>
+			<div class="out" onclick="page_activity.go(this)">校外活动</div>
+		</div>
+		<div class="infor"></div>
+		<div class="more" style="display:none" onclick="page_activity.show();">更多</div>
+	</div>
+	
+	<script type="text/javascript">
+    	var page_activity={
+			init: function() {
+	    		page_activity.refresh();
+			},
+			beforeshow: function() {
+				$InterAction.setHeader("活动", "", "refresh");
+				setActiveBtn(2);
+				showFooter();
+			},
+			refresh: function() {
+				var me = page_activity;
+				var config = GLOBAL_CONFIG.activity;
+				config.page = 1;
+				config.total = 0;
+				config.cnt = 0;
+				config.activityId = null;
+				config.inorout = 1;
+				$("#page_activity .content .infor").empty();
+				page_activity.nextPage();
+			},
+			nextPage:function(){
+				var config = GLOBAL_CONFIG.activity;
+				$("#page_activity .content .more").hide();
+				$MsgBox.showLoading();
+				$.jsonp({
+					url : GLOBAL.baseUrl+'/edu/activityMobi_getactivitybyclass.action',
+					callback :'callback',
+					data:{
+						companyId:GLOBAL.companyId,
+						imei: GLOBAL.imei,
+						page:config.page,
+						rows:config.rows,
+						type:config.type
+					},
+					complete:function(){$MsgBox.hideLoading()},
+					success : function(data) {
+						if(data && data.success && data.result) {
+							var rows = data.result.rows;
+							if(data.result.total){
+								config.total = data.result.total;
+							}
+							var len = rows.length;
+							var html='';
+							for(var i=0;i<len;i++){
+								html+="<div class='detail' onclick='page_activity.goDetail("+rows[i].activityId+")'>"
+								if(rows[i].smallPic){
+									html+= "<div class='Img'>"
+										+ "<img src='"+ rows[i].picUrl +"'>"
+										+ "</div>";
+								}else{
+									html+= "<div class='Img'>"
+										+ "<img src='images/activity.png"+"'>"
+										+ "</div>";
+								}
+								
+								html += "<div class='title'>" + rows[i].title
+									 + "</div>"
+									 + "<div class='introduce'>" + rows[i].introduction
+									 + "</div>"
+									 + "</div>"
+							}
+							$("#page_activity .content .infor").append(html);
+							config.cnt += len;
+							if( config.cnt< config.total){
+								$("#page_activity .content .more").show();
+								config.page++;
+							}else{
+								$("#page_activity .content .more").hide();
+							}
+						}else{
+							$("#page_activity .content .infor").html('<p style="text-align:center;">暂无数据！</p>');
+						}
+					}
+				});
+			},
+			goDetail:function(Id){
+				localStorage.setItem("activityId",Id);
+				$PageHandler.moveToPage("activityDetail.html");
+			},
+			go:function(a){
+				if($(a).attr("class")=="in"){
+					$(a).css("background","rgb(245,181,0)");
+					$("#page_activity .content .out").css("background","rgb(65,157,170)");
+					GLOBAL_CONFIG.activity.type = 1;//校内
+					page_activity.refresh();
+				}else{
+					$(a).css("background","rgb(245,181,0)");
+					$("#page_activity .content .in").css("background","rgb(65,157,170)");
+					GLOBAL_CONFIG.activity.type = 2;//校外
+					$("#page_activity .content .infor").empty();
+					page_activity.refresh();
+				}
+			}
+		};
+    	
+    	$('#page_activity').bind('pageinit', page_activity.init)
+						   .bind('pagebeforeshow', page_activity.beforeshow);
+    </script>
+</div>
