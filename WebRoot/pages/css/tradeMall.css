@@ -8,6 +8,7 @@
 }
 
 #page_tradeMall .content .list {
+	background : white;
 	width : 96%;
 	margin-left : 1.5%;
 	margin-bottom : 4px;
@@ -38,11 +39,16 @@
 #page_tradeMall .content .list .item .intro {
 	width : 90%;
 	margin-left : 5%;
+	padding-bottom : 5px;
 }
 #page_tradeMall .content .list .item .thingImg {
+	padding-top : 5px;
 	width : 100%;
 }
 #page_tradeMall .content .list .item img {
 	width : 90%;
 	margin-left : 5%;
+}
+.clearfix {
+	clear : both;
 }

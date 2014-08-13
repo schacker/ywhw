@@ -1,0 +1,20 @@
+#page_tradeCenter .content img{
+	width : 100%;
+}
+#page_tradeCenter .content .list .item {
+	width : 96%;
+	border : 2px #419BA6 solid;
+	margin-top : 5px;
+	margin-left : 1.4%;
+	padding-top : 5px;
+	padding-bottom : 5px;
+	border-radius : 9px;  
+}
+#page_tradeCenter .content .list .item .left {
+	width : 30%;
+	float : left;
+}
+#page_tradeCenter .content .list .item .right {
+	width : 68%;
+	float : right;
+}
