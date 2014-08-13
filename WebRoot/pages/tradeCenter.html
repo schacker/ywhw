@@ -45,6 +45,10 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="add" onclick="page_tradeCenter.add()">
+			<!--<img src="css/images/add.png" style="width: 10%;margin-left: 45%">-->
+			添加
 		</div>	
 	</div>
 	<script type="text/javascript">
@@ -56,8 +60,11 @@
 				setActiveBtn(2);
 				showFooter();
 			},
-			goPage:function(url){
+			goPage: function(url){
 				$PageHandler.moveToPage(url);
+			},
+			add: function(){
+				$PageHandler.moveToPage('add.html');
 			}
 		};
     	$('#page_tradeCenter').bind('pageinit', page_tradeCenter.init)

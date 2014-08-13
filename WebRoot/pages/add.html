@@ -1,0 +1,25 @@
+<!-- 个人交换物品中心，做成列表形式 -->
+<div id="page_add">
+	<link href="css/add.css" rel="stylesheet" type="text/css"/>
+	<div class="content">
+	</div>
+	<script type="text/javascript">
+    	var page_add={
+			init: function() {
+			},
+			beforeshow: function() {
+				$InterAction.setHeader("易物中心", "", "refresh");
+				setActiveBtn(2);
+				showFooter();
+			},
+			goPage: function(url){
+				$PageHandler.moveToPage(url);
+			},
+			add: function(){
+				$PageHandler.moveToPage('add.html');
+			}
+		};
+    	$('#page_add').bind('pageinit', page_add.init)
+					   		  .bind('pagebeforeshow', page_add.beforeshow);
+    </script>
+</div>
