@@ -1,1 +1,83 @@
-<!-- ÎïÆ·ÏêÇé£¬Ò×ÎïÖĞĞÄµã»÷¾ßÌåÎïÆ·½øÈë£¬¶Ô×Ô¼ºËù¹ÒµÄÎïÆ·½øĞĞÉ¾³ı»òĞŞ¸Ä -->
+<!-- ç‰©å“è¯¦æƒ…ï¼Œæ˜“ç‰©ä¸­å¿ƒç‚¹å‡»å…·ä½“ç‰©å“è¿›å…¥ï¼Œå¯¹è‡ªå·±æ‰€æŒ‚çš„ç‰©å“è¿›è¡Œåˆ é™¤æˆ–ä¿®æ”¹ -->
+<div id="page_details">
+	<link href="css/add.css" rel="stylesheet" type="text/css"/>
+	<div class="content">
+		<div class="item name clearfix">
+			<div class="txt">åç§°ï¼š</div>
+			<div class="in"><input type="text"></div>
+		</div>
+		<div class="item intro clearfix">
+			<div class="txt">ä»‹ç»ï¼š</div>
+			<div class="in"><input type="text"></div>
+		</div>
+		<div class="item price  clearfix">
+			<div class="txt">ä»·æ ¼ï¼š</div>
+			<div class="in"><input type="text"></div>
+		</div>
+		<div class="item contact  clearfix">
+			<div class="txt">è”ç³»æ–¹å¼ï¼š</div>
+			<div class="in"><input type="text"></div>
+		</div>
+		<div class="operation">
+			<div class="del">åˆ é™¤</div>
+			<div class="edit">ç¡®è®¤ä¿®æ”¹</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+    	var page_details={
+			init: function() {
+				refresh();
+			},
+			beforeshow: function() {
+				$InterAction.setHeader("æ˜“ç‰©ä¸­å¿ƒ", "back", "refresh");
+				setActiveBtn(2);
+				showFooter();
+			},
+			refresh: function(){
+				$MsgBox.showLoading();
+				$.jsonp({
+					url: 'xxxxxx.action',
+					callback: 'callback',
+					data:{
+						commodityId: commodityId,
+						 imei:GLOBAL.imei
+					},
+					complete: function(json,t){$MsgBox.hideLoading()},
+					success: function(data){
+						if(data.result && data.result.rows.length){
+							var rows = data.result.rows;
+							$('page_details .content .name .in input').val(rows[0].name);
+							$('page_details .content .intro .in input').val(rows[0].intro);
+							$('page_details .content .price .in input').val(rows[0].price);
+							$('page_details .content .contact .in input').val(rows[0].contact);
+						}
+					}
+				})
+			},
+			goPage: function(url){
+				$PageHandler.moveToPage(url);
+			},
+			add:function(){
+				$MsgBox.showLoading();
+				$.jsonp({
+					url: 'xxxxxx.action',
+					callback: 'callback',
+					data:{
+						commodityId: commodityId,
+						 imei:GLOBAL.imei
+					},
+					complete: function(json,t){$MsgBox.hideLoading()},
+					success: function(data){
+						if(data.result){
+							$MsgBox.alert(timer,'ä¿®æ”¹æˆåŠŸï¼');
+						}else{
+							$MsgBox.alert(timer,'ä¿®æ”¹å¤±è´¥ï¼');
+						}
+					}
+				})
+			}
+		};
+    	$('#page_details').bind('pageinit', page_details.init)
+					  .bind('pagebeforeshow', page_details.beforeshow);
+    </script>
+</div>

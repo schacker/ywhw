@@ -2,6 +2,23 @@
 <div id="page_add">
 	<link href="css/add.css" rel="stylesheet" type="text/css"/>
 	<div class="content">
+		<div class="item name clearfix">
+			<div class="txt">名称：</div>
+			<div class="in"><input placeholder="名称" type="text"></div>
+		</div>
+		<div class="item intro clearfix">
+			<div class="txt">介绍：</div>
+			<div class="in"><input placeholder="简介" type="text"></div>
+		</div>
+		<div class="item price  clearfix">
+			<div class="txt">价格：</div>
+			<div class="in"><input placeholder="价格" type="text"></div>
+		</div>
+		<div class="item contact  clearfix">
+			<div class="txt">联系方式：</div>
+			<div class="in"><input placeholder="电话或QQ" type="text"></div>
+		</div>
+		<div class="add" onclick="page_add.add()">确认添加</div>
 	</div>
 	<script type="text/javascript">
     	var page_add={
@@ -16,10 +33,10 @@
 				$PageHandler.moveToPage(url);
 			},
 			add: function(){
-				$PageHandler.moveToPage('add.html');
+				
 			}
 		};
     	$('#page_add').bind('pageinit', page_add.init)
-					   		  .bind('pagebeforeshow', page_add.beforeshow);
+					  .bind('pagebeforeshow', page_add.beforeshow);
     </script>
 </div>

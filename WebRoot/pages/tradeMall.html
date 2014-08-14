@@ -67,9 +67,9 @@
 					url:GLOBAL.baseUrl + "/fashion/fashionMobi_getbycompany.action",
 					callback:'callback',
 					data:{
-						companyId:GLOBAL.companyId,
-						page:config.pageno,
-						rows:config.rows
+						companyId: GLOBAL.companyId,
+						page: config.pageno,
+						rows: config.rows
 					},
 					complete: function(json,t){$MsgBox.hideLoading();},
 					success: function(data){

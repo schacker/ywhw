@@ -3,7 +3,7 @@
 	<link href="css/tradeCenter.css" rel="stylesheet" type="text/css"/>
 	<div class="content">
 		<div class="list">
-			<div class="item clearfix">
+			<div class="item clearfix" onclick="page_tradeCenter.goDetail()">
 				<div class="left">
 					<img src="css/images/jp.jpg">
 				</div>
@@ -60,8 +60,9 @@
 				setActiveBtn(2);
 				showFooter();
 			},
-			goPage: function(url){
-				$PageHandler.moveToPage(url);
+			goDetail: function(id){
+				localStorage.setItem("commodityId",id);
+				$PageHandler.moveToPage('details.html');
 			},
 			add: function(){
 				$PageHandler.moveToPage('add.html');
