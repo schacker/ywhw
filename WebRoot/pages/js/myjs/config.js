@@ -23,13 +23,6 @@ var GLOBAL_CONFIG = {
 		type:1,
 		searchWord:null
 	},
-	alumniBook:{
-		page:1,
-		rows:2,
-		total:5,
-		cnt:0,
-		type:1
-	},
 	activity:{
 		page:1,
 		rows:3,
@@ -44,21 +37,6 @@ var GLOBAL_CONFIG = {
 	newsDetail: {
 		newsId:null,
 	},
-	discuss:{
-		pageno:1,
-		rows:5,
-		total:0,
-		itemCnt:0,
-		newsId:null
-	},
-	courseSchedule : {
-		week:1
-	},
-	examSchedule:{
-		month:null,
-	},
-	privateInfo:{
-	},
 	suggest:{
 		type: '',
 		content: '',
@@ -70,13 +48,9 @@ var GLOBAL_CONFIG = {
 		total:0,
 		itemCtn:0
 	},
-	login:{
-	},
 	changePsw:{
 		userName:'',
 		verifyCode:''
-	},
-	sendMessage:{
 	},
 	chat: {
 		toId: null,
@@ -84,8 +58,6 @@ var GLOBAL_CONFIG = {
 		toHeadUrl: null,
 		faceState:0,
 		contentHeight: 0
-	},
-	introducation:{
 	},
 	faculty:{
 		classId:1,
@@ -99,27 +71,24 @@ var GLOBAL_CONFIG = {
 		classId:1,
 		userId:0
 	},
-	letter:{
-	},
 	notepadList:{
-		pageno:1,
-		rows:5,
-		total:0,
-		cnt:0,
-		isClick:true,
-		item:null,
-		noteId:null
+		pageno: 1,
+		rows: 5,
+		total: 0,
+		cnt: 0,
+		isClick: true,
+		item: null,
+		noteId: null
 	},
-	notepadAdd:{
-		noteId:null,
-		imgstore:null,
-		imglength:null,
-		data:null
-	},
-	otherList:{
+	details:{
+		commodityId: null,
+		name: null,
+		intro: null,
+		price: null,
+		contact: null
 	},
 	more:{
-		nickName:null
+		nickName: null
 	},
 	tradeMall:{
 		pageno:1,

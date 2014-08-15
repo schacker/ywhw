@@ -1,0 +1,51 @@
+#page_mallInfor .content {
+	margin-top : 20px;
+}
+#page_mallInfor .content .thingImg {
+	width : 96%;
+	margin-left : 2%;
+}
+#page_mallInfor .content .thingImg img{
+	width : 100%;
+}
+
+#page_mallInfor .content input {
+	border : 0px;
+	width : 70%;
+	border-radius : 5px;
+	height : 24px;
+}
+#page_mallInfor .content .item {
+	margin-top : 5px;
+	width : 90%;
+	font-size : 15px;
+	border-radius : 5px;
+}
+
+#page_mallInfor .content .item .txt {
+	width : 30%;
+	float : left;
+	text-align : right;
+}
+#page_mallInfor .content .item .in {
+	width : 68%;
+	float : right;
+}
+#page_mallInfor .content .operation .con {
+	width : 30%;
+	margin-left : 18%;
+	float : left;
+}
+#page_mallInfor .content .operation .msg {
+	width : 30%;
+	margin-right : 18%;
+	float : right;
+}
+#page_mallInfor .content .operation .oper {
+	margin-top : 10px;
+	padding-top : 5px;
+	padding-bottom : 5px;
+	text-align : center;
+	border : 2px solid #419BA6;
+	border-radius : 5px;  
+}

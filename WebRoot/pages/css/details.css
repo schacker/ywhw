@@ -1,0 +1,45 @@
+#page_details .content {
+	margin-top : 20px;
+}
+
+#page_details .content input {
+	border : 0px;
+	width : 70%;
+	border-radius : 5px;
+	height : 24px;
+}
+#page_details .content .item {
+	margin-top : 5px;
+	width : 90%;
+	border-radius : 5px;
+}
+
+#page_details .content .item .txt {
+	width : 30%;
+	float : left;
+	margin-top : 3.4px;
+	font-size : 16px;
+	text-align : right;
+}
+#page_details .content .item .in {
+	width : 68%;
+	float : right;
+}
+#page_details .content .operation .del {
+	width : 30%;
+	margin-left : 18%;
+	float : left;
+}
+#page_details .content .operation .edit {
+	width : 30%;
+	margin-right : 18%;
+	float : right;
+}
+#page_details .content .operation .oper {
+	margin-top : 10px;
+	padding-top : 5px;
+	padding-bottom : 5px;
+	text-align : center;
+	border : 2px solid #419BA6;
+	border-radius : 5px;  
+}

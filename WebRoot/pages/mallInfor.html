@@ -1,30 +1,31 @@
 <!-- 物品详情，易物中心点击具体物品进入，对自己所挂的物品进行删除或修改 -->
-<div id="page_details">
-	<link href="css/details.css" rel="stylesheet" type="text/css"/>
+<div id="page_mallInfor">
+	<link href="css/mallInfor.css" rel="stylesheet" type="text/css"/>
 	<div class="content">
+		<div class="thingImg"><img src="css/images/jp.jpg"></div>
 		<div class="item name clearfix">
 			<div class="txt">名称：</div>
-			<div class="in"><input type="text"></div>
+			<div class="in">啊啊啊啊啊啊</div>
 		</div>
 		<div class="item intro clearfix">
 			<div class="txt">介绍：</div>
-			<div class="in"><input type="text"></div>
+			<div class="in">啊实打实大师打</div>
 		</div>
 		<div class="item price  clearfix">
 			<div class="txt">价格：</div>
-			<div class="in"><input type="text"></div>
+			<div class="in">123</div>
 		</div>
 		<div class="item contact  clearfix">
 			<div class="txt">联系方式：</div>
-			<div class="in"><input type="text"></div>
+			<div class="in">18281603530</div>
 		</div>
 		<div class="operation clearfix">
-			<div class="del oper" onclick="page_details.del()">删除</div>
-			<div class="edit oper" onclick="page_details.modify()">修改</div>
+			<div class="con oper" onclick="page_mallInfor.del()">猛戳我</div>
+			<div class="msg oper" onclick="page_mallInfor.modify()">留言</div>
 		</div>
 	</div>
 	<script type="text/javascript">
-    	var page_details={
+    	var page_mallInfor={
 			init: function() {
 				//refresh();
 			},
@@ -39,17 +40,17 @@
 					url: 'xxxxxx.action',
 					callback: 'callback',
 					data:{
-						commodityId: GLOBAL_CONFIG.details.commodityId,
+						commodityId: GLOBAL_CONFIG.mallInfor.commodityId,
 						imei:GLOBAL.imei
 					},
 					complete: function(json,t){$MsgBox.hideLoading()},
 					success: function(data){
 						if(data.result && data.result.rows.length){
 							var rows = data.result.rows;
-							$('page_details .content .name .in input').val(rows[0].name);
-							$('page_details .content .intro .in input').val(rows[0].intro);
-							$('page_details .content .price .in input').val(rows[0].price);
-							$('page_details .content .contact .in input').val(rows[0].contact);
+							$('page_mallInfor .content .name .in input').val(rows[0].name);
+							$('page_mallInfor .content .intro .in input').val(rows[0].intro);
+							$('page_mallInfor .content .price .in input').val(rows[0].price);
+							$('page_mallInfor .content .contact .in input').val(rows[0].contact);
 						}
 					}
 				})
@@ -58,11 +59,11 @@
 				$PageHandler.moveToPage(url);
 			},
 			modify: function(){
-				var v = GLOBAL_CONFIG.details;
-				v.name =  $('#page_details .content .name .in input').val();
-				v.intro = $('#page_details .content .intro .in input').val();
-				v.price = $('#page_details .content .price .in input').val();
-				v.contact = $('#page_details .content .contact .in input').val();
+				var v = GLOBAL_CONFIG.mallInfor;
+				v.name =  $('#page_mallInfor .content .name .in input').val();
+				v.intro = $('#page_mallInfor .content .intro .in input').val();
+				v.price = $('#page_mallInfor .content .price .in input').val();
+				v.contact = $('#page_mallInfor .content .contact .in input').val();
 				$MsgBox.showLoading();
 				$.jsonp({
 					url: 'xxxxxx.action', //修改acion
@@ -90,7 +91,7 @@
 					url: 'xxxxxx.action', //删除action
 					callback: 'callback',
 					data:{
-						commodityId: GLOBAL_CONFIG.details.commodityId,
+						commodityId: GLOBAL_CONFIG.mallInfor.commodityId,
 						 imei:GLOBAL.imei
 					},
 					complete: function(json,t){},
@@ -104,7 +105,7 @@
 				})
 			}
 		};
-    	$('#page_details').bind('pageinit', page_details.init)
-					  	.bind('pagebeforeshow', page_details.beforeshow);
+    	$('#page_mallInfor').bind('pageinit', page_mallInfor.init)
+					  	.bind('pagebeforeshow', page_mallInfor.beforeshow);
     </script>
 </div>
