@@ -1,0 +1,28 @@
+callback({
+	"success" : true,
+	"total" : 3,
+	"result" : {
+		"rows" : [{
+			"commodityId" : 1,
+			"smallPic" : "css/images/logo.jpg",
+			"thingName" : "无线鼠标",
+			"intro" : "这是之前买的无线鼠标，前段时间买成45！",
+			"price" : 25,
+			"postTime" : "20140502" 			 
+		},{
+			"commodityId" : 2,
+			"smallPic" : "css/images/logo.jpg",
+			"thingName" : "无线鼠标",
+			"intro" : "这是之前买的无线鼠标，前段时间买成45！",
+			"price" : 25,
+			"postTime" : "20140502" 			 
+		},{
+			"commodityId" : 3,
+			"smallPic" : "css/images/logo.jpg",
+			"thingName" : "无线鼠标",
+			"intro" : "这是之前买的无线鼠标，前段时间买成45！",
+			"price" : 25,
+			"postTime" : "20140502" 			 
+		}]
+	}
+})
