@@ -95,5 +95,8 @@ var GLOBAL_CONFIG = {
 		itemCnt:0,
 		total:0,
 		rows:3
+	},
+	mallInfor: {
+		contact: null
 	}
 };

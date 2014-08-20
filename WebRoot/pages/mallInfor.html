@@ -20,8 +20,8 @@
 			<div class="in">18281603530</div>
 		</div>
 		<div class="operation clearfix">
-			<div class="con oper" onclick="page_mallInfor.del()">猛戳我</div>
-			<div class="msg oper" onclick="page_mallInfor.modify()">留言</div>
+			<div class="con oper" onclick="page_mallInfor.con()">猛戳我</div>
+			<div class="msg oper" onclick="page_mallInfor.msg()">留言</div>
 		</div>
 	</div>
 	<script type="text/javascript">
@@ -47,10 +47,11 @@
 					success: function(data){
 						if(data.result && data.result.rows.length){
 							var rows = data.result.rows;
-							$('page_mallInfor .content .name .in input').val(rows[0].name);
-							$('page_mallInfor .content .intro .in input').val(rows[0].intro);
-							$('page_mallInfor .content .price .in input').val(rows[0].price);
-							$('page_mallInfor .content .contact .in input').val(rows[0].contact);
+							GLOBAL_CONFIG.mallInfor.contact = rows[0].contact; 
+							$('page_mallInfor .content .name .in').val(rows[0].name);
+							$('page_mallInfor .content .intro .in').val(rows[0].intro);
+							$('page_mallInfor .content .price .in').val(rows[0].price);
+							$('page_mallInfor .content .contact .in').val(rows[0].contact);
 						}
 					}
 				})
@@ -58,43 +59,22 @@
 			goPage: function(url){
 				$PageHandler.moveToPage(url);
 			},
-			modify: function(){
+			con: function(){ //打电话,android实现
 				var v = GLOBAL_CONFIG.mallInfor;
-				v.name =  $('#page_mallInfor .content .name .in input').val();
-				v.intro = $('#page_mallInfor .content .intro .in input').val();
-				v.price = $('#page_mallInfor .content .price .in input').val();
-				v.contact = $('#page_mallInfor .content .contact .in input').val();
-				$MsgBox.showLoading();
-				$.jsonp({
-					url: 'xxxxxx.action', //修改acion
-					callback: 'callback',
-					data:{
-						imei:GLOBAL.imei,
-						commodityId: v.commodityId,
-						name: v.name,
-						intro: v.intro,
-						price: v.price,
-						contact: v.contact
-					},
-					complete: function(json,t){$MsgBox.hideLoading()},
-					success: function(data){
-						if(data.result){
-							$MsgBox.alert(timer,'修改成功！');
-						}else{
-							$MsgBox.alert(timer,'修改失败！');
-						}
-					}
-				})
+				v.contact = $('#page_mallInfor .content .contact .in').val();
+				if(v.contact != null){
+					//调用函数
+				}
 			},
-			del: function(){
+			msg: function(){ //留言
 				$.jsonp({
 					url: 'xxxxxx.action', //删除action
 					callback: 'callback',
 					data:{
 						commodityId: GLOBAL_CONFIG.mallInfor.commodityId,
-						 imei:GLOBAL.imei
+						imei:GLOBAL.imei
 					},
-					complete: function(json,t){},
+					complete: function(json, t){},
 					success: function(data){
 						if(data.result){
 							$MsgBox.alert('删除成功！');
