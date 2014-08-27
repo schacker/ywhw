@@ -1,4 +1,4 @@
-<!-- 物品详情，易物中心点击具体物品进入，对自己所挂的物品进行删除或修改 -->
+<!-- 易物城物品详情，易物城点击具体物品进入，进行查看，对物品主人进行联系或留言 -->
 <div id="page_mallInfor">
 	<link href="css/mallInfor.css" rel="stylesheet" type="text/css"/>
 	<div class="content">
@@ -64,11 +64,12 @@
 				v.contact = $('#page_mallInfor .content .contact .in').val();
 				if(v.contact != null){
 					//调用函数
+					alert();
 				}
 			},
 			msg: function(){ //留言
 				$.jsonp({
-					url: 'xxxxxx.action', //删除action
+					url: 'xxxxxx.action', //留言 action
 					callback: 'callback',
 					data:{
 						commodityId: GLOBAL_CONFIG.mallInfor.commodityId,

@@ -2,10 +2,10 @@
 <div id="page_tradeMall">
 	<link rel='stylesheet' type='text/css' href='css/tradeMall.css'>
 	<div class='content'>
-		<div class="top">
+		<!-- <div class="top">
 			<div class="logo"><img src="css/images/logo.jpg"></div>
 		</div>
-		<div class="list" onclick="page_tradeMall.go()">
+		<div class="list" onclick="page_tradeMall.go('commodityId')">
 			<div class="item">
 				<div class="thingImg"><img src="css/images/jp.jpg"/></div>
 				<div class="thingName">机械键盘</div>
@@ -37,7 +37,7 @@
 					<div class="postTime right">时间：2014-3-1</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<div class='more' onclick='page_tradeMall.nextPage()' style="display: none;">更多</div>
 	</div>
 	<script type="text/javascript">
@@ -64,10 +64,10 @@
 				$('#page_tradeMall .more').hide();
 				$MsgBox.showLoading();
 				$.jsonp({
-					url:GLOBAL.baseUrl + "/fashion/fashionMobi_getbycompany.action",
+					//url:GLOBAL.baseUrl + "/fashion/fashionMobi_getbycompany.action",
+					url: 'json/tradeMall.json',
 					callback:'callback',
 					data:{
-						companyId: GLOBAL.companyId,
 						page: config.pageno,
 						rows: config.rows
 					},
@@ -81,14 +81,14 @@
 								len = rows.length,
 								str = "<div class='top'><div class='logo'><img src='css/images/logo.jpg'></div></div>";
 							for(var i = 0; i < len; i++){
-								str+= "<div class='list'>"
+								str+= "<div class='list' onclick='page_tradeMall.go("+rows[i].commodityId+")'>"
 								+ "<div class='item'>"
-								+ "<div class='thingImg'><img src='"+rows[i].thingImg+"'></div>"
+								+ "<div class='thingImg'><img src='"+rows[i].smallPic+"'></div>"
 								+ "<div class='thingName'>" + rows[i].thingName + "</div>"
 								+ "<div class='intro'>" + rows[i].intro + "</div>"
-								+ "<div class='itemTop'>"
-								+ "<div class='price'>" + rows[i].price +  "</div>"
-								+ "<div class='postTime'>" + rows[i].postTime + "</div>" 
+								+ "<div class='itemTop clearfix'>"
+								+ "<div class='price left'>" + "价格：" + rows[i].price +  "</div>"
+								+ "<div class='postTime right'>" + "时间：" + rows[i].postTime + "</div>" 
 								+ "</div>"
 								+ "</div>"
 								+ "</div>"
@@ -100,12 +100,16 @@
 							} else {
 								$('#page_tradeMall .more').hide();
 							}
-							$("#page_tradeMall .list").append(str);
+							$("#page_tradeMall .content").append(str);
 						}else if(config.pageno == 1){
 							$("#page_tradeMall .content").html('<div align="center"><h2>暂无内容</h2></div>');
 						}	
 					}
 				});
+			},
+			go: function(commodityId){
+				localStorage.setItem("commodityId", commodityId);
+				$PageHandler.moveToPage('mallInfor.html');
 			}
 		}
 		$('#page_tradeMall').bind('pageinit',page_tradeMall.init)
